@@ -26,19 +26,19 @@ function bigInt2Wordlist (largeNum) {
     return res
 }
 
-function buf2Int32Array (buffer) {
+function buf2UInt32Array (buffer) {
     var hex = buffer.toString(crypto.enc.Hex)
-    return chunk(hex.split(''), 2).map(function (c) {
-        return parseInt(c.join(''), 32)
+    return chunk(hex.split(''), 8).map(function (c) {
+        return parseInt(c.join(''), 16)
     })
 }
 
 function buf2BigInt (buffer) {
-    var ints = buf2Int32Array(buffer)
+    var ints = buf2UInt32Array(buffer)
     var maxUint32 = bigInt(2).pow(32).minus(1)
     var res = bigInt(0)
 
-    for (var i = 0; i < ints.length; i += 4) {
+    for (var i = 0; i < ints.length; i++) {
         res = res.multiply(maxUint32).plus(ints[i])
     }
 
