@@ -9,8 +9,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "big-integer": "^1.6.23",
-    "crypto-js": "^3.1.9-1",
-    "lodash": "^4.17.4"
+    "big-integer": "1.6.51",
+    "crypto-js": "4.1.1",
+    "lodash": "4.17.21"
   }
 }
