@@ -7,11 +7,19 @@ module.exports = {
   generate: generate
 };
 
+/**
+ * @param {string} s
+ * @returns {string[]}
+ */
 function generate(s) {
   var encrypted = crypto.SHA256(crypto.enc.Utf8.parse(s));
   return bigInt2Wordlist(buf2BigInt(encrypted));
 }
 
+/**
+ * @param {bigInt.BigInteger} largeNum
+ * @returns {string[]}
+ */
 function bigInt2Wordlist(largeNum) {
   var base = wordList.length;
   var res = [];
@@ -26,6 +34,10 @@ function bigInt2Wordlist(largeNum) {
   return res;
 }
 
+/**
+ * @param {crypto.lib.WordArray} buffer
+ * @returns {number[]}
+ */
 function buf2UInt32Array(buffer) {
   var hex = buffer.toString(crypto.enc.Hex);
   return chunk(hex.split(""), 8).map(function(c) {
@@ -33,6 +45,10 @@ function buf2UInt32Array(buffer) {
   });
 }
 
+/**
+ * @param {crypto.lib.WordArray} buffer
+ * @returns {bigInt.BigInteger}
+ */
 function buf2BigInt(buffer) {
   var ints = buf2UInt32Array(buffer);
   var maxUint32 = bigInt(2)
