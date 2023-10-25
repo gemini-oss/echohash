@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "big-integer": "1.6.51",
-    "crypto-js": "4.1.1",
+    "crypto-js": "4.2.0",
     "lodash": "4.17.21"
   }
 }
